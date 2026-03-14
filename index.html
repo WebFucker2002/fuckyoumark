@@ -72,7 +72,7 @@ body {
   // Wait for the audio to be ready to play before setting the time
   audioPlayer.addEventListener('canplaythrough', function() {
     // Check if the current time has already been set to avoid issues in some browsers
-    if (this.currentTime < 0) {
+    if (this.currentTime < 30) {
       this.currentTime = 30; // Skip to 30 seconds
     }
     this.play(); // Start playing (it will be muted as per HTML attribute)
