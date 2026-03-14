@@ -2,7 +2,9 @@
 <html>
 <head>
 
- <audio autoplay loop src="NIGGAS.mp3"></audio>
+<audio id="backgroundAudio" autoplay muted loop>
+  <source src="NIGGAS.mp3" type="audio/mpeg">
+</audio>
   
 <style>
 body {
@@ -63,7 +65,20 @@ body {
     }
   
 </style>
-  
+ 
+<script>
+   var audioPlayer = document.getElementById('backgroundAudio');
+
+  // Wait for the audio to be ready to play before setting the time
+  audioPlayer.addEventListener('canplaythrough', function() {
+    // Check if the current time has already been set to avoid issues in some browsers
+    if (this.currentTime < 0) {
+      this.currentTime = 30; // Skip to 30 seconds
+    }
+    this.play(); // Start playing (it will be muted as per HTML attribute)
+  });
+</script>
+ 
 </head>
 <body>
 
